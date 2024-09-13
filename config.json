@@ -1,0 +1,18 @@
+{
+    "title": "Example Blog",
+    "description": "This is example blog.",
+    "category": [
+        "blog"
+    ],
+    "author": {
+        "id": "nikachu",
+        "name": "chu nika",
+        "username": "nikachu2012",
+        "social": [
+            {
+                "service": "twitter",
+                "url": "https://twitter.com/nikachu2012"
+            }
+        ]
+    }
+}
