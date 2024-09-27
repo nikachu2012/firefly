@@ -9,14 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "14.2.6",
+    "html-react-parser": "^5.1.16",
+    "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",
     "rehype-stringify": "^10.0.0",
     "remark": "^15.0.1",
+    "remark-extract-frontmatter": "^3.2.0",
+    "remark-frontmatter": "^5.0.0",
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.0"
+    "remark-rehype": "^11.1.0",
+    "yaml": "^2.5.1"
   },
   "devDependencies": {
     "@types/node": "^20",
