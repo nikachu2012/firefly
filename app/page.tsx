@@ -1,4 +1,3 @@
-import { article } from "@/src/article";
 import { config } from "@/src/config";
 
 export default function Home() {
@@ -6,7 +5,6 @@ export default function Home() {
     <>
       <h1>{config.title}</h1>
 
-      <pre>{JSON.stringify(article, null, 2)}</pre>
     </>
   );
 }
