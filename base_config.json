@@ -1,0 +1,9 @@
+{
+    "useUuid": true,
+    "tempFolder": "_temp",
+    "postsFolder": "posts",
+    "frontmatter": {
+        "type": "yaml",
+        "marker": "-"
+    }
+}
