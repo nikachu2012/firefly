@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 import { join } from "path";
-import { baseConfig } from "./config";
+import { baseConfig } from "../config";
 
 
 export default function getMarkdownArticle(filePath: string): string {

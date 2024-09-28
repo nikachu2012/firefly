@@ -5,7 +5,7 @@ import rehypeStringify from 'rehype-stringify';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import { parse } from "yaml"
-import { frontMatterTypeGuard } from './typeguard/frontMatter';
+import { frontMatterTypeGuard } from '../typeguard/frontMatter';
 
 export async function parseArticleMarkdown(articleMarkdown: string): Promise<MarkdownObj> {
     const processed = await unified()
