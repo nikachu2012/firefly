@@ -31,9 +31,9 @@ export async function parseArticleMarkdown(articleMarkdown: string): Promise<Mar
         .use(rehypeStringify)
         .process(articleMarkdown)
 
-    const typeAssert = processed.data.frontMatter as frontMatter;
+    const frontmatter = processed.data.frontMatter as frontMatter;
 
     return {
-        html: String(processed), frontmatter: typeAssert
+        html: String(processed), frontmatter: frontmatter
     }
 }
