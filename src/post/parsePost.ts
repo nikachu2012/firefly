@@ -7,7 +7,7 @@ import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import { parse } from "yaml"
 import { frontMatterTypeGuard } from '../typeguard/frontMatter';
 
-export async function parseArticleMarkdown(articleMarkdown: string): Promise<MarkdownObj> {
+export async function parsePost(postMarkdown: string): Promise<MarkdownObj> {
     const processed = await unified()
         .use(remarkParse)
         .use(remarkFrontmatter, [{
@@ -21,7 +21,7 @@ export async function parseArticleMarkdown(articleMarkdown: string): Promise<Mar
         })
         .use(remarkRehype)
         .use(rehypeStringify)
-        .process(articleMarkdown)
+        .process(postMarkdown)
 
     const frontMatter = frontMatterTypeGuard(processed.data.frontMatter as frontMatter);
 
