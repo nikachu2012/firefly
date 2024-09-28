@@ -3,7 +3,7 @@ import { baseConfig } from "@/src/config";
 import { readdirSync, readFileSync, statSync, writeFileSync } from "fs";
 import { join } from "path";
 import { uuidToPath } from "@/src/post/uuidToPath";
-import getMarkdownArticle from "@/src/getMarkdownArticle";
+import { Metadata } from "next";
 
 export const dynamicParams = false;
 export const dynamic = 'force-static';
@@ -27,6 +27,14 @@ export async function generateStaticParams() {
     }
 }
 
+export const generateMetadata = async ({ params }: { params: { slug: string } }): Promise<Metadata> => {
+    const postHTML = await getPost(uuidToPath[params.slug]) // get markdown
+
+    return {
+        title: `${postHTML.frontMatter.title}`,
+        description: `${postHTML.frontMatter.description ? postHTML.frontMatter.description : ""}`,
+    };
+}
 
 export default async function Post({ params }: { params: { slug: string } }) {
     if (baseConfig.useUuid) {
