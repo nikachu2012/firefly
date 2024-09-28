@@ -1,6 +1,6 @@
 import { HTMLReactParserOptions } from "html-react-parser";
 import Image from "next/image";
-import { join } from "path";
+import { join } from "path/posix";
 import parse from "html-react-parser"
 
 export function parseJSX(html: string, articlePath: string) {
