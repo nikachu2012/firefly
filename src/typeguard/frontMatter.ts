@@ -20,8 +20,8 @@ export function frontMatterTypeGuard(obj: frontMatter): frontMatter {
         throw new Error(`Frontmatter Author is not string. (author: ${String(obj.author)})`)
 
     // uuid
-    if (typeof obj.uuid !== "string")
-        throw new Error(`Frontmatter UUID is not string. (uuid: ${String(obj.uuid)}`)
+    if (typeof obj.uuid !== "string" && typeof obj.uuid !== "undefined")
+        throw new Error(`Frontmatter UUID is not string. (uuid: ${String(obj.uuid)})`)
 
     return obj
 }
