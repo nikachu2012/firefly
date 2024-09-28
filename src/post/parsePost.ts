@@ -26,6 +26,6 @@ export async function parsePost(postMarkdown: string): Promise<MarkdownObj> {
     const frontMatter = frontMatterTypeGuard(processed.data.frontMatter as frontMatter);
 
     return {
-        html: String(processed), frontmatter: frontMatter
+        html: String(processed), frontMatter: frontMatter
     }
 }

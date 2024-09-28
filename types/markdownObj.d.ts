@@ -1,6 +1,4 @@
-
-
 type MarkdownObj = {
     html: string
-    frontmatter: frontMatter
+    frontMatter: frontMatter
 }
