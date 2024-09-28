@@ -5,6 +5,7 @@ import rehypeStringify from 'rehype-stringify';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import { parse } from "yaml"
+import { frontMatterTypeGuard } from './typeguard/frontMatter';
 
 export async function parseArticleMarkdown(articleMarkdown: string): Promise<MarkdownObj> {
     const processed = await unified()
@@ -22,9 +23,9 @@ export async function parseArticleMarkdown(articleMarkdown: string): Promise<Mar
         .use(rehypeStringify)
         .process(articleMarkdown)
 
-    const frontmatter = processed.data.frontMatter as frontMatter;
+    const frontMatter = frontMatterTypeGuard(processed.data.frontMatter as frontMatter);
 
     return {
-        html: String(processed), frontmatter: frontmatter
+        html: String(processed), frontmatter: frontMatter
     }
 }
