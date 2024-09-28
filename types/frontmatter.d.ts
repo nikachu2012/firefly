@@ -1,7 +1,7 @@
 type frontMatter = {
     title: string
     description: string | undefined
-    timestamp: string
-    create: string
+    timestamp: string | number
+    author: string
     uuid: string | undefined
 }
