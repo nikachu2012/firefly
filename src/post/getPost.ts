@@ -16,9 +16,8 @@ export default async function getPost(filePath: string): Promise<PostObj> {
         return cache[filePath]
     }
 
-
     // not cached
-    console.log(`Note: ${filePath} is using cache.`)
+    console.log(`Note: ${filePath} is not using cache.`)
     const markdown = readFileSync(targetFilePath, { encoding: "utf-8" }); // get markdown
     const { html, frontMatter } = await parsePost(markdown); // generate html
     const postJSX = parseJSX(html, filePath); // parse JSX
