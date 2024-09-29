@@ -4,6 +4,7 @@ import { join } from "path";
 import getPost from "@/src/post/getPost";
 import { uuidToPath } from "@/src/post/uuidToPath";
 import { Metadata } from "next";
+import PostTheme from "@/theme/post";
 
 import "@/app/highlight.css"
 export const dynamicParams = false;
@@ -44,9 +45,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
         postHTML = await getPost(params.slug)
     }
 
-    return <>
-        {postHTML.frontMatter.title}<br />
-        {postJSX}
-    </>;
+    return PostTheme(postHTML);
 }
 
