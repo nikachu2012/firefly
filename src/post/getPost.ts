@@ -9,7 +9,7 @@ export let cache: { [key: string]: PostObj } = {}
 export default async function getPost(filePath: string): Promise<PostObj> {
     const targetFilePath = join(baseConfig.postsFolder, filePath, "index.md");
 
-    if (cache[filePath] !== undefined) {
+    if (process.env.NODE_ENV !== "development" && cache[filePath] !== undefined) {
         // cached
         console.log(`Note: ${filePath} is using cache.`)
 
