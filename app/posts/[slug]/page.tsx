@@ -1,7 +1,6 @@
 import { baseConfig } from "@/src/config";
-import { readdirSync, readFileSync, statSync, writeFileSync } from "fs";
+import { readdirSync, statSync } from "fs";
 import { join } from "path";
-import { parseJSX } from "@/src/post/parseJSX";
 import getPost from "@/src/post/getPost";
 import { uuidToPath } from "@/src/post/uuidToPath";
 import { Metadata } from "next";
@@ -9,8 +8,6 @@ import { Metadata } from "next";
 import "@/app/highlight.css"
 export const dynamicParams = false;
 export const dynamic = 'force-static';
-
-const EXPORT_PATH = join(baseConfig.tempFolder, "uuidToPath.json");
 
 export async function generateStaticParams() {
     const dirList = readdirSync(baseConfig.postsFolder).filter((file) => {
