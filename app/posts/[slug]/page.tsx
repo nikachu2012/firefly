@@ -37,17 +37,13 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
-    let postHTML: MarkdownObj;
-    let postJSX;
+    let postHTML: PostObj;
 
     if (baseConfig.useUuid) {
-        const uuidToPath: { [key: string]: string } = JSON.parse(readFileSync(EXPORT_PATH, { encoding: "utf-8" }));
         postHTML = await getPost(uuidToPath[params.slug]) // get markdown
-        postJSX = parseJSX(postHTML.html, uuidToPath[params.slug]); // parse html
     }
     else {
         postHTML = await getPost(params.slug)
-        postJSX = parseJSX(postHTML.html, params.slug);
     }
 
     return <>
