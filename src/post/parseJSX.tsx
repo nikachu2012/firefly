@@ -7,16 +7,12 @@ export function parseJSX(html: string, articlePath: string) {
     const option: HTMLReactParserOptions = {
         replace(domNode) {
             if (domNode.type == "tag") {
-                if (domNode.name == "h1") {
-                    domNode.attribs.className += "node"
-                    return domNode
-                }
-                else if (domNode.name == "img") {
+                if (domNode.name == "img") {
                     return <Image
                         src={"/" + join("assets", articlePath, domNode.attribs.src)}
                         alt={domNode.attribs.alt ? domNode.attribs.alt : "Image"}
-                        width={100}
-                        height={100}
+                        width={500}
+                        height={500}
                     />
                 }
             }
