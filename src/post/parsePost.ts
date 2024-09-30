@@ -7,6 +7,8 @@ import remarkExtractFrontmatter from 'remark-extract-frontmatter';
 import { parse } from "yaml"
 import { frontMatterTypeGuard } from '../typeguard/frontMatter';
 import rehypeShiki from '@shikijs/rehype'
+import remarkGfm from 'remark-gfm';
+import remarkGithubAlerts from 'remark-github-alerts';
 
 
 
@@ -22,6 +24,7 @@ export async function parsePost(postMarkdown: string): Promise<MarkdownObj> {
             yaml: parse,
             name: 'frontMatter'
         })
+        .use(remarkGithubAlerts)
         .use(remarkRehype)
         // .use(rehypePrism, { showLineNumbers: true })
         .use(rehypeShiki, {
@@ -30,7 +33,9 @@ export async function parsePost(postMarkdown: string): Promise<MarkdownObj> {
                 light: "everforest-light",
                 dark: "everforest-dark",
             }
-        }).use(rehypeStringify)
+        })
+        .use(remarkGfm)
+        .use(rehypeStringify)
         .process(postMarkdown)
 
     const frontMatter = frontMatterTypeGuard(processed.data.frontMatter as frontMatter);

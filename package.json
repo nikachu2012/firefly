@@ -17,6 +17,8 @@
     "remark": "^15.0.1",
     "remark-extract-frontmatter": "^3.2.0",
     "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-github-alerts": "^0.1.0-beta.3",
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
