@@ -6,7 +6,6 @@ import { uuidToPath } from "@/src/post/uuidToPath";
 import { Metadata } from "next";
 import PostTheme from "@/theme/post";
 
-import "@/app/highlight.css"
 export const dynamicParams = false;
 export const dynamic = 'force-static';
 
