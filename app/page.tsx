@@ -7,13 +7,13 @@ export default async function Home() {
     return (
         <>
             <h1>{config.title}</h1>
-            <ol className="list-disc list-inside ml-5">
-                {(await getAllPost()).map((e) => {
+            <ul className="list-disc list-inside ml-5">
+                {(await getAllPost()).map((e, i) => {
                     return <>
-                        <li><Link href={join(baseConfig.postsFolder, baseConfig.useUuid && e.frontMatter.uuid !== undefined ? e.frontMatter.uuid : e.filePath)}>{e.frontMatter.title}</Link></li>
+                        <li key={i}><Link href={join(baseConfig.postsFolder, baseConfig.useUuid && e.frontMatter.uuid !== undefined ? e.frontMatter.uuid : e.filePath)}>{e.frontMatter.title}</Link></li>
                     </>
                 })}
-            </ol>
+            </ul>
         </>
     );
 }
