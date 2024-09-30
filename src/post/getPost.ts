@@ -22,7 +22,7 @@ export default async function getPost(filePath: string): Promise<PostObj> {
     const { html, frontMatter } = await parsePost(markdown); // generate html
     const postJSX = parseJSX(html, filePath); // parse JSX
 
-    const newObj: PostObj = { html: html, jsx: postJSX, frontMatter: frontMatter }
+    const newObj: PostObj = { html: html, jsx: postJSX, frontMatter: frontMatter, filePath: filePath }
     cache[filePath] = newObj;
 
     return newObj
