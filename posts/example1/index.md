@@ -38,12 +38,15 @@ This is `inline` code.
 
 ```c {1,3-4}
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 int main()
 {
     // this is code block
     char str[] = "hotaru kawaii";
 
-    write(STDOUT_FILENO, str, strlen(str))
+    write(STDOUT_FILENO, str, strlen(str));
 }
 ```
 
