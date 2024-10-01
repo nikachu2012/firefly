@@ -1,6 +1,6 @@
 import { baseConfig } from "@/src/config";
 import { readdirSync, statSync } from "fs";
-import { join } from "path";
+import { join } from "path/posix";
 import getPost from "@/src/post/getPost";
 import getUuidToPath from "@/src/post/uuidToPath";
 import { Metadata } from "next";
