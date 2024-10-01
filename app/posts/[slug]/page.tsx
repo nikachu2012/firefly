@@ -2,7 +2,7 @@ import { baseConfig } from "@/src/config";
 import { readdirSync, statSync } from "fs";
 import { join } from "path";
 import getPost from "@/src/post/getPost";
-import { uuidToPath } from "@/src/post/uuidToPath";
+import getUuidToPath from "@/src/post/uuidToPath";
 import { Metadata } from "next";
 import PostTheme from "@/theme/post";
 
@@ -11,7 +11,7 @@ export const dynamic = 'force-static';
 
 export async function generateStaticParams() {
     if (baseConfig.useUuid) {
-        return Object.keys(uuidToPath).map((postUuid: string) => ({
+        return Object.keys(await getUuidToPath()).map((postUuid: string) => ({
             slug: postUuid
         }))
     }
@@ -27,7 +27,7 @@ export async function generateStaticParams() {
 }
 
 export const generateMetadata = async ({ params }: { params: { slug: string } }): Promise<Metadata> => {
-    const postHTML = await getPost(uuidToPath[params.slug]) // get markdown
+    const postHTML = await getPost((await getUuidToPath())[params.slug]) // get markdown
 
     return {
         title: `${postHTML.frontMatter.title}`,
@@ -39,7 +39,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     let postHTML: PostObj;
 
     if (baseConfig.useUuid) {
-        postHTML = await getPost(uuidToPath[params.slug]) // get markdown
+        postHTML = await getPost((await getUuidToPath())[params.slug]) // get markdown
     }
     else {
         postHTML = await getPost(params.slug)
