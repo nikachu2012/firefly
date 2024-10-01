@@ -3,10 +3,14 @@ import { join } from "path/posix";
 import { baseConfig } from "../config";
 import { parsePost } from "./parsePost";
 
-export let uuidToPath: { [key: string]: string } = {};
+let uuidToPath: { [key: string]: string } = {};
+let cached: boolean = false;
 
-(async () => {
-    if (baseConfig.useUuid) {
+export default async function getUuidToPath(): Promise<{ [key: string]: string }> {
+    if (cached) {
+        return uuidToPath
+    }
+    else {
         const dirList = readdirSync(baseConfig.postsFolder).filter((file) => {
             return statSync(join(baseConfig.postsFolder, file)).isDirectory();
         })
@@ -31,5 +35,8 @@ export let uuidToPath: { [key: string]: string } = {};
                 }
             }
         }
+        cached = true;
+
+        return uuidToPath
     }
-})();
+}
