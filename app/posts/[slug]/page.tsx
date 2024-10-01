@@ -10,15 +10,16 @@ export const dynamicParams = false;
 export const dynamic = 'force-static';
 
 export async function generateStaticParams() {
-    const dirList = readdirSync(baseConfig.postsFolder).filter((file) => {
-        return statSync(join(baseConfig.postsFolder, file)).isDirectory();
-    })
     if (baseConfig.useUuid) {
         return Object.keys(uuidToPath).map((postUuid: string) => ({
             slug: postUuid
         }))
     }
     else {
+        const dirList = readdirSync(baseConfig.postsFolder).filter((file) => {
+            return statSync(join(baseConfig.postsFolder, file)).isDirectory();
+        })
+
         return dirList.map((postName: string) => ({
             slug: postName
         }))
